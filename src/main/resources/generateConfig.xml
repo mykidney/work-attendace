@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE generatorConfiguration 
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  
+<generatorConfiguration> 
+<!--classPathEntry:数据库的jdbc驱动-->
+<classPathEntry location="E:\mavenjar\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+<context id="MySqlTables" targetRuntime="MyBatis3">
+
+<!--是否自动生成注释-->
+<commentGenerator>
+<property name="suppressAllComments" value="true" />
+</commentGenerator>
+
+<!--配置数据库链接-->
+<jdbcConnection 
+driverClass="com.mysql.jdbc.Driver" 
+connectionURL="jdbc:mysql://localhost:3306/work_attendance"
+userId="root"
+password="123456"> 
+
+</jdbcConnection>
+<javaTypeResolver> 
+<property name="forceBigDecimals" value="false" /> 
+</javaTypeResolver> 
+
+<!--java模型生成器 targetProject：自动生成代码位置-->
+<javaModelGenerator targetPackage="com.coder520.user.entity"
+targetProject="C:\Users\youzh\IdeaProjects\work-attendace\src\main\java">
+<!--enableSubPackages：是否让schema作为包的后缀-->
+<property name="enableSubPackages" value="true" /> 
+<!--数据库返回的值被清理前后空格-->
+<property name="trimStrings" value="true" /> 
+</javaModelGenerator> 
+
+<!--配置实体map接口（dao）-->   
+<sqlMapGenerator targetPackage="com.coder520.user.dao"
+targetProject="C:\Users\youzh\IdeaProjects\work-attendace\src\main\java">
+<property name="enableSubPackages" value="true" /> 
+</sqlMapGenerator> 
+    
+<!--mapper也就是dao接口生成器-->   
+<javaClientGenerator type="XMLMAPPER" 
+targetPackage="com.coder520.user.dao"
+targetProject="C:\Users\youzh\IdeaProjects\work-attendace\src\main\java">
+ <property name="enableSubPackages" value="true" /> 
+</javaClientGenerator>
+
+<!--配置实体-->
+ <table tableName="role" domainObjectName="Role"
+        enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" selectByExampleQueryId="false">
+ </table>
+ <table tableName="permission" domainObjectName="Permission"
+        enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" selectByExampleQueryId="false">
+ </table>
+</context> 
+</generatorConfiguration>
